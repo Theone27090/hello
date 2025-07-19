@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <title>Crear Cuenta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="css/estilos.css" rel="stylesheet"/>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <div id="clock"></div>
+    <div class="register-box">
+        <div class="user-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Icono de usuario"/>
+        </div>
+        <button class="close-btn" type="button" onclick="location.href='1111.html'" aria-label="Cerrar">×</button>
+        <h2>NUEVO USUARIO</h2>
+        <form onsubmit="event.preventDefault(); location.href='index.html';">
+            <input type="text" name="firstName" placeholder="Nombre" required/>
+            <input type="text" name="lastName" placeholder="Apellido" required/>
+            <input type="text" name="userName" placeholder="Usuario" required/>
+            <input type="email" name="email" placeholder="Correo electrónico" required/>
+            <input type="password" name="password" placeholder="Contraseña" required/>
+            <input type="password" name="confirmPassword" placeholder="Confirmar contraseña" required/>
+            <div class="buttons">
+                <button type="submit">Aceptar</button>
+                <button type="button" onclick="location.href='index.html'">Cancelar</button>
+            </div>
+        </form>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

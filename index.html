@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Inicio de Sesión</title>
+    <link href="css/estilos.css" rel="stylesheet"/>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <div class="login-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Icono de usuario"/>
+        <h2>Inicia Sesión</h2>
+        <form onsubmit="event.preventDefault(); if(this.email.value && this.password.value){ window.location.href='login.html'; }">
+            <input type="email" name="email" placeholder="Correo electrónico" required/>
+            <input type="password" name="password" placeholder="Contraseña" required/>
+            <button type="submit">Ingresar</button>
+        </form>
+        <div class="forgot">
+            ¿Olvidaste tu contraseña?
+            <a href="#">Haz clic para restablecer</a>
+            <br/>
+            ¿No tienes cuenta?
+            <a href="crear-cuenta.html">Crear cuenta</a>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
