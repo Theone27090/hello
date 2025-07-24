@@ -64,6 +64,30 @@
             box-shadow: 0 0 10px #00ff00;
             background: #111;
         }
+        .image-section button {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            margin-top: 10px;
+            background: linear-gradient(90deg, #0f0 0%, #00ff99 100%);
+            color: #111;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 0 10px #00ff00, 0 2px 8px #000a;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.1s;
+            outline: none;
+        }
+        .image-section button:hover, 
+        .image-section button:focus {
+            background: linear-gradient(90deg, #00ff99 0%, #0f0 100%);
+            color: #000;
+            transform: scale(1.04);
+            box-shadow: 0 0 20px #00ff00, 0 4px 16px #000a;
+        }
         .pagination {
             text-align: center;
             margin: 30px 0 10px 0;
@@ -106,11 +130,35 @@
             background: #0f0;
             color: #111;
         }
+        .btn-regresar-top {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+            padding: 14px 38px;
+            background: #000;
+            color: #0f0;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            font-family: Consolas, monospace;
+            font-size: 1.25em;
+            text-decoration: none;
+            box-shadow: 0 0 14px #00ff00;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            z-index: 20;
+        }
+        .btn-regresar-top:hover {
+            background: #0f0;
+            color: #000;
+            border: 2px solid #0f0;
+        }
     </style>
 </head>
 <body>
     <canvas id="matrix-bg"></canvas>
     <a href="login.html" class="btn-regresar">⬅ Regresar a inicio</a>
+    <a href="2juegos.html" class="btn-regresar-top">Ir a más juegos</a>
     <div class="container">
         <div class="page" id="page1">
 
@@ -201,12 +249,7 @@
                     Memoria: 1 GB de RAM<br>
                     Gráficos: 1 GB<br>
                     Almacenamiento: 1 GB de espacio disponible<br>
-                    <strong>Recomendado:</strong><br>
-                    SO: Win XP, 7, 8, Vista, 10<br>
-                    Procesador: 2 GHz Intel Pentium 4 o AMD Athlon o equivalente<br>
-                    Memoria: 2 GB de RAM<br>
-                    Gráficos: 2 GB<br>
-                    Almacenamiento: 2 GB de espacio disponible
+                    Tarjeta de sonido: DirectX compatible
                 </div>
                 <div class="image-section">
                     <img alt="Five Nights at Freddy's Sister Location" src="https://imgs.search.brave.com/7Q54DDlNLOkJXhKMO1IW949uFLupVtsOFPNlUJUOzHc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vczcwMnQ2/ZDBNTFJ4WEVTZkk3/RHNxanRiOEwyWFk5/Yk1DcV9nXzIzVzcy/dy9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlw/YldGbi9aWE15TG1G/c2NHaGhZMjlrL1pY/SnpMbU52YlM4eE16/VXYvZEdoMWJXSmlh/V2N0TVRNMS9PVE01/Tnk1M1pXSnc.jpeg"/>
@@ -219,7 +262,8 @@
             <div class="game-card">
                 <div class="section-title">El Último Suspiro</div>
                 <div class="section-content">
-                    Requisitos mínimos:<br>
+                     Requisitos del sistema<br>
+                     <strong>Mínimo:</strong><br>
                     Direct3D 11.1<br>
                     VRAM: 2GB (Gráfica)
                 </div>
@@ -234,7 +278,8 @@
             <div class="game-card">
                 <div class="section-title">One Night at Flumpty's</div>
                 <div class="section-content">
-                    Requisitos:<br>
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
                     Requiere un dispositivo con al menos 2 GB de RAM
                 </div>
                 <div class="image-section">
@@ -248,6 +293,8 @@
             <div class="game-card">
                 <div class="section-title">One Night at Flumpty's 2</div>
                 <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
                     Sistema operativo: Microsoft Windows 7 o posterior, MacOS 11 (Big Sur) o posterior<br>
                     Procesador: Intel, AMD o Apple Silicon<br>
                     RAM: Su PC debe tener al menos 4 GB de RAM
@@ -263,6 +310,8 @@
             <div class="game-card">
                 <div class="section-title">60 Parsecs</div>
                 <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
                     Requiere un procesador y un sistema operativo de 64 bits<br>
                     SO: Windows 7/8/10 64 Bit<br>
                     Procesador: i5-2430M<br>
@@ -282,7 +331,8 @@
             <div class="game-card">
                 <div class="section-title">Bread &amp; Fred</div>
                 <div class="section-content">
-                    <strong>Recomendado:</strong><br>
+                    Requisitos del sistema<br>
+                  <strong>Mínimo:</strong><br>
                     SO: Windows 7<br>
                     Procesador: Dual Core 2.4 GhZ<br>
                     Memoria: 2 GB de RAM<br>
@@ -299,7 +349,8 @@
             <div class="game-card">
                 <div class="section-title">Buckshot Roulette</div>
                 <div class="section-content">
-                    <strong>Recomendado:</strong><br>
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
                     Requiere un procesador y un sistema operativo de 64 bits<br>
                     SO: Windows 10<br>
                     Procesador: Intel Core i5<br>
