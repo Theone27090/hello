@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>THEONE</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #0f0;
+            font-family: 'Consolas', monospace;
+        }
+        body {
+            position: relative;
+            min-height: 100vh;
+        }
+        #matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 80%;
+            margin: 40px auto;
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00ff00;
+            padding: 30px;
+            border: 2px solid #00ff00;
+        }
+        .separator {
+            border-bottom: 2px solid #00ff00;
+            margin: 30px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            border: 1px solid #00ff00;
+            border-radius: 8px;
+            padding: 8px 0;
+            background: rgba(0,0,0,0.4);
+            box-shadow: 0 0 10px #00ff00;
+        }
+        .section-content {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .image-section img {
+            max-width: 300px;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto 10px auto;
+            box-shadow: 0 0 10px #00ff00;
+            background: #111;
+        }
+        .image-section button {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            margin-top: 10px;
+            background: linear-gradient(90deg, #0f0 0%, #00ff99 100%);
+            color: #111;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 0 10px #00ff00, 0 2px 8px #000a;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.1s;
+            outline: none;
+        }
+        .image-section button:hover, 
+        .image-section button:focus {
+            background: linear-gradient(90deg, #00ff99 0%, #0f0 100%);
+            color: #000;
+            transform: scale(1.04);
+            box-shadow: 0 0 20px #00ff00, 0 4px 16px #000a;
+        }
+        .pagination {
+            text-align: center;
+            margin: 30px 0 10px 0;
+        }
+        .pagination button {
+            background: #111;
+            color: #0f0;
+            border: 1px solid #0f0;
+            border-radius: 6px;
+            font-family: Consolas, monospace;
+            font-size: 1.1em;
+            margin: 0 8px;
+            padding: 8px 18px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .pagination button.active,
+        .pagination button:hover {
+            background: #0f0;
+            color: #111;
+        }
+        .btn-regresar {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: inline-block;
+            padding: 12px 32px;
+            background: #111;
+            color: #0f0;
+            border: 1px solid #0f0;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 1.2em;
+            text-decoration: none;
+            box-shadow: 0 0 10px #0f0;
+            transition: background 0.2s, color 0.2s;
+            z-index: 10;
+        }
+        .btn-regresar:hover {
+            background: #0f0;
+            color: #111;
+        }
+        .btn-regresar-top {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+            padding: 14px 38px;
+            background: #000;
+            color: #0f0;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            font-family: Consolas, monospace;
+            font-size: 1.25em;
+            text-decoration: none;
+            box-shadow: 0 0 14px #00ff00;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            z-index: 20;
+        }
+        .btn-regresar-top:hover {
+            background: #0f0;
+            color: #000;
+            border: 2px solid #0f0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix-bg"></canvas>
+    <a href="login.html" class="btn-regresar">⬅ Regresar a inicio</a>
+    <div class="container">
+        <div class="page" id="page1">
+
+            <div class="game-card">
+                <div class="section-title">Devil may cry 4 </div>
+                <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                    SO: XP, Vista, Windows 8.1 <br>
+                    intel(R) Core(TM) 2 Duo 2.4GHz, AMD Athlon(TM) X2 2.8 GHz<br>
+                    Memoria: 2GB de RAM<br>
+                    Gráficos: 1 GB<br>
+                    DirectX: Versión 9.0<br>
+                    Almacenamiento:  27 GB de espacio disponible
+                </div>
+                <div class="image-section">
+                    <img alt="Five Nights at Freddy's" src="https://imgs.search.brave.com/maGEyVTv9bTDZP8cFbHclQKEA77wxAq15qrMds3IdFU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuYWxwaGFjb2Rl/cnMuY29tLzU4Ni90/aHVtYmJpZy01ODYy/ODYud2VicA"/>
+                    <a download href="https://www.mediafire.com/file/anul2i4cqokh9wx/Fnaf_1.rar/file">
+                        <button>no disponible</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="section-title">papers please</div>
+                <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                   Windows XP or later<br>
+                    Procesador: 2 GHz Intel Pentium 4 o AMD Athlon o equivalente<br>
+                    Memoria: 2 GB de RAM<br>
+                    Gráficos:OpenGL 1.4 or better <br>
+                    Almacenamiento: 100 MB de espacio disponible
+                </div>
+                <div class="image-section">
+                    <img alt="Five Nights at Freddy's 2" src="https://imgs.search.brave.com/TR3wqeEqxisxXFUNRVW3CrISUSa_RSX8JodlyERFuaI/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS52YW5kYWwubmV0/L2kvMzAweDE2MC84/LTIwMTMvMjAxMzgx/MjE3MjY1MV8xLmpw/Zw"/>
+                    <a download href="https://www.mediafire.com/file/5vfbzhhg9r99dri/Five_Nights_At_Freddy%2527s_2_Full.rar/file">
+                        <button>No disponible</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="section-title">hollow knight</div>
+                <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                    SO: XP, Vista, Windows 7, Windows 8<br>
+                    Procesador: Intel Core 2 Duo E5200<br>
+                    Memoria: 4 GB de RAM<br>
+                    Gráficos:  GeForce 9800GTX+ (1GB)<br>
+                    DirectX: Versión 10 <br>
+                    Almacenamiento: 9 GB  de espacio disponible
+                </div>
+                <div class="image-section">
+                    <img alt="Five Nights at Freddy's 3" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/367520/header.jpg?t=1695270428"/>
+                    <a download href="https://www.mediafire.com/file/si9zcqh9stvuyni/Fnaf_3.rar/file">
+                        <button>No disponible</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="section-title">Left 4 Dead</div>
+                <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                    SO: Windows® 7 32/64-bit / Vista 32/64 / XP<br>
+                    Procesador: Pentium 4 3.0GHz <br>
+                    Memoria: 2 GB de RAM<br>
+                    Almacenamiento: 1 GB de espacio disponible
+                </div>
+                <div class="image-section">
+                    <img alt="Five Nights at Freddy's 4" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/500/header.jpg?t=1745368560"/>
+                    <a download href="https://www.mediafire.com/file/oi6glv4gclbp7dh/fnaf_4.rar/file">
+                        <button>no disponible</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="section-title">Left 4 Dead 2</div>
+                <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                
+                    SO: Win XP, 7, 8, Vista, 10<br>
+                    Procesador: Pentium 4 3.0GHz<br>
+                    Memoria: 2 GB de RAM <br>
+                    Gráficos: Video card with 128 MB, Shader model 2.0. ATI X800, NVidia 6600 or better<br>
+                    Almacenamiento:  13 GB de espacio disponible<br>
+                 
+                </div>
+                <div class="image-section">
+                    <img alt="Five Nights at Freddy's Sister Location" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/550/header.jpg?t=1745368562"/>
+                    <a download href="https://www.mediafire.com/file/iv9i8h23wraj1ld/Five_Nights_at_Freddys_Sister_Location.rar/file">
+                        <button>No disponible</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="section-title">Cuphead</div>
+                <div class="section-content">
+                   Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                    SO: Win XP, 7, 8, Vista, 10<br>
+                     Intel Core2 Duo E8400, 3.0GHz or AMD
+                     Memoria: 3 GB de RAM
+                     Gráficos: Geforce 9600 GT or AMD HD 3870 512MB or higher
+                     DirectX: Versión 11
+                     Almacenamiento: 10GB de espacio disponible
+                </div>
+                <div class="image-section">
+                    <img alt="El Último Suspiro" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/268910/header.jpg?t=1709068852"/>
+                    <a download href="https://www.mediafire.com/file/d1jeujyewyjxqxa/ElUltimoSuspiro_V.1.1.1.rar/file">
+                        <button>No disponible</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="section-title">Call of Duty®: Black Ops</div>
+                <div class="section-content">
+            Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                    Windows® Vista / XP / 7
+                    Intel® Core™2 Duo E6600 or AMD Phenom™ X3 8750 or better<br>
+                   memoria 2GB RAM<br>
+                   DirectX®: DirectX® 9.0<br>
+                   Almacenamiento: 15 GB de espacio disponible
+                <div class="image-section">
+                    <img alt="One Night at Flumpty's" src="
+                    https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/42700/header.jpg?t=1748040520"/>
+                    <a download href="https://www.mediafire.com/file/4yygu6zbjswiemv/onaf_1.rar/file">
+                        <button>No disponible</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="section-title">Limbo</div>
+                <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                    Windows XP, Vista, 7 <br>
+                    Procesador:  2 GHz <br>
+                    RAM: Su PC debe tener al menos 1GB de RAM<br>
+                Almacenamiento: 1 GB de espacio disponible<br>
+                DirectX®: 9.0c<br> 
+                <div class="image-section">
+                    <img alt="One Night at Flumpty's 2" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/48000/header.jpg?t=1749027661"/>
+                    <a download href="https://www.mediafire.com/file/lws8tp26k49ca9r/onaf_2.rar/file">
+                        <button>Descargar</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="section-title">R-Type Final 2</div>
+                <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                    Requiere un procesador y un sistema operativo de 64 bits<br>
+                    SO: Windows 7/8/10 64 Bit<br>
+                    Procesador:Dual core AMD or Intel processor @ 3.0 GHz or faster<br>
+                    Memoria: 4 GB de RAM<br>
+                    Gráficos: GTX 950, AMD R9 280 or newer<br>
+                    DirectX: Versión 11 <br>
+                    Almacenamiento: 12 GB de espacio disponible
+                </div>
+                <div class="image-section">
+                    <img alt="60 Parsecs" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1442820/header.jpg?t=1734028457"/>
+                    <a download href="https://www.mediafire.com/file/5ixzaygyjerkpbk/60_Parsecs.rar/file">
+                        <button>No disponoble</button>
+                    </a>
+
+            <div class="game-card">
+                <div class="section-title">plantas vs zombies 2.3</div>
+                <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                    <strong>Recomendado:</strong><br>
+                    SO: Windows XP, Vista o 7<br>
+                    Procesador: 1.2 GHz.<br>
+                    DirectX: Versión 8 o posterior<br>
+                    Memoria: 512 MB RAM<br>
+                    Almacenamiento: 65 MB de espacio disponible
+                </div>
+                <div class="image-section">
+                    <img alt="Bread & Fred" src="https://imgs.search.brave.com/yfjLvRS2kXfXk0sbjAH1OV1nNsk5VsmJ6j94bkOugTU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvcGxh/bnRzLXZzLXpvbWJp/ZXMtYmFja2dyb3Vu/ZC13OG5zMHMxcnli/emdsZ3c2LmpwZw"/>
+                    <a download href="https://www.mediafire.com/file/ub3c4zzqtplq915/Bread_%2526_Fred.rar/file">
+                        <button>Descargar</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="section-title">Forager</div>
+                <div class="section-content">
+                    Requisitos del sistema<br>
+                    <strong>Mínimo:</strong><br>
+                    Requiere un procesador y un sistema operativo de 64 bits<br>
+                    SO: Windows XP and above<br>
+                    Procesador: 1.2Ghz <br>
+                    Memoria: 1024 MB de RAM<br>
+                    Gráficos: Tarjeta gráfica dedicada moderna<br>
+                    Almacenamiento: 200 MB de espacio disponible
+                </div>
+                <div class="image-section">
+                    <img alt="Buckshot Roulette" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/751780/header.jpg?t=1699372258"/>
+                    <a download href="https://www.mediafire.com/file/8hz3024kqyu2dea/Buckshot_Roulette.rar/file">
+                        <button>Descargar</button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        // Animación Matrix Hacker (letras chinas)
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+
+        const letters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const fontSize = 18;
+        const columns = Math.floor(width / fontSize);
+        const drops = Array(columns).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+            ctx.fillRect(0, 0, width, height);
+            ctx.font = fontSize + "px monospace";
+            ctx.fillStyle = "#0F0";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 33);
+
+        window.addEventListener('resize', () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        });
+    </script>
+</body>
+</html>
