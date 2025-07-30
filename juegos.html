@@ -156,6 +156,7 @@
     </style>
 </head>
 <body>
+    <audio id="bg-music" src="musica.mp3" loop></audio>
     <canvas id="matrix-bg"></canvas>
     <a href="login.html" class="btn-regresar">⬅ Regresar a inicio</a>
     <a href="2juegos.html" class="btn-regresar-top">Ir a más juegos</a>
@@ -404,6 +405,41 @@
             canvas.width = width;
             canvas.height = height;
         });
+
+        // Reproducir música tras cualquier interacción del usuario
+        function tryPlayMusic() {
+            const audio = document.getElementById('bg-music');
+            if (audio && audio.paused) {
+                audio.volume = 1,0 // Opcional: volumen medio
+                audio.play().catch(() => {
+                    if (!document.getElementById('audio-msg')) {
+                        const msg = document.createElement('div');
+                        msg.id = 'audio-msg';
+                        msg.textContent = 'Haz clic en cualquier parte para activar la música.';
+                        msg.style.position = 'fixed';
+                        msg.style.top = '50%';
+                        msg.style.left = '50%';
+                        msg.style.transform = 'translate(-50%, -50%)';
+                        msg.style.background = '#111';
+                        msg.style.color = '#0f0';
+                        msg.style.padding = '20px 40px';
+                        msg.style.border = '2px solid #0f0';
+                        msg.style.borderRadius = '10px';
+                        msg.style.zIndex = '9999';
+                        document.body.appendChild(msg);
+                        setTimeout(() => {
+                            msg.remove();
+                        }, 3000);
+                    }
+                });
+            }
+            document.removeEventListener('click', tryPlayMusic);
+            document.removeEventListener('keydown', tryPlayMusic);
+            document.removeEventListener('touchstart', tryPlayMusic);
+        }
+        document.addEventListener('click', tryPlayMusic);
+        document.addEventListener('keydown', tryPlayMusic);
+        document.addEventListener('touchstart', tryPlayMusic);
     </script>
 </body>
 </html>
