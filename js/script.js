@@ -95,3 +95,35 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 updateClock();
+
+        // Reproducir música tras cualquier interacción del usuario
+        function tryPlayMusic() {
+            const audio = document.getElementById('bg-music');
+            if (audio && audio.paused) {
+                audio.volume = 1.0; // Volumen al 100%
+                audio.play().catch(() => {
+                    if (!document.getElementById('audio-msg')) {
+                        const msg = document.createElement('div');
+                        msg.id = 'audio-msg';
+                        msg.textContent = 'Haz clic en cualquier parte para activar la música.';
+                        msg.style.position = 'fixed';
+                        msg.style.top = '50%';
+                        msg.style.left = '50%';
+                        msg.style.transform = 'translate(-50%, -50%)';
+                        msg.style.background = '#111';
+                        msg.style.color = '#0f0';
+                        msg.style.padding = '20px 40px';
+                        msg.style.border = '2px solid #0f0';
+                        msg.style.borderRadius = '10px';
+                        msg.style.zIndex = '9999';
+                        document.body.appendChild(msg);
+                        setTimeout(() => {
+                            msg.remove();
+                        }, 3000);
+                    }
+                });
+            }
+            document.removeEventListener('click', tryPlayMusic);
+            document.removeEventListener('keydown', tryPlayMusic);
+            document.removeEventListener('touchstart', tryPlayMusic);
+        }
